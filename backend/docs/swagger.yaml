@@ -1,0 +1,151 @@
+definitions:
+  domain.APIError:
+    properties:
+      message:
+        description: Renamed from Message
+        type: string
+      statusCode:
+        description: Renamed from Code
+        type: integer
+    type: object
+  domain.User:
+    properties:
+      createdAt:
+        example: "2024-01-01T00:00:00Z"
+        type: string
+      dob:
+        example: "1990-01-01T00:00:00Z"
+        type: string
+      email:
+        example: user@example.com
+        type: string
+      firstName:
+        example: John
+        type: string
+      id:
+        example: 1
+        type: integer
+      password:
+        description: Add this field
+        example: password123
+        type: string
+      surname:
+        example: Doe
+        type: string
+      updatedAt:
+        example: "2024-01-01T00:00:00Z"
+        type: string
+    type: object
+  handler.LoginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  handler.RegisterRequest:
+    properties:
+      dob:
+        type: string
+      email:
+        type: string
+      firstName:
+        type: string
+      password:
+        type: string
+      surname:
+        type: string
+    required:
+    - dob
+    - email
+    - firstName
+    - password
+    - surname
+    type: object
+info:
+  contact: {}
+paths:
+  /api/login:
+    post:
+      consumes:
+      - application/json
+      description: Authenticate user and return JWT token
+      parameters:
+      - description: Login credentials
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handler.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/domain.APIError'
+      summary: Login user
+      tags:
+      - Authentication
+  /api/register:
+    post:
+      consumes:
+      - application/json
+      description: Register a new user in the system
+      parameters:
+      - description: Registration details
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handler.RegisterRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: User registered successfully
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Invalid request body
+          schema:
+            $ref: '#/definitions/domain.APIError'
+      summary: Register a new user
+      tags:
+      - Authentication
+  /api/users:
+    post:
+      consumes:
+      - application/json
+      description: Create a new user in the system
+      parameters:
+      - description: User details
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/domain.User'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/domain.APIError'
+      summary: Create a new user
+      tags:
+      - Users
+swagger: "2.0"

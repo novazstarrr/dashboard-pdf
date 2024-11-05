@@ -1,0 +1,15 @@
+# Runtime data
+/uploads/
+*.db
+
+# Environment
+.env
+
+# Binary files
+/bin/
+*.exe
+*.out
+
+# System files
+.DS_Store
+

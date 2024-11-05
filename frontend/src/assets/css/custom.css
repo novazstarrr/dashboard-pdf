@@ -1,0 +1,98 @@
+:root {
+  --bs-primary: #4CAF50;
+  --bs-secondary: #81C784;
+  --bs-success: #66BB6A;
+  --bs-info: #B9F6CA;
+  --bs-light: #E8F5E9;
+  --bs-dark: #2E7D32;
+}
+
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--bs-dark);
+  border-color: var(--bs-dark);
+}
+
+.text-primary {
+  color: var(--bs-primary) !important;
+}
+
+.border-primary {
+  border-color: var(--bs-primary) !important;
+}
+
+.bg-primary {
+  background-color: var(--bs-primary) !important;
+}
+
+.btn-outline-success {
+  color: var(--bs-success);
+  border-color: var(--bs-success);
+}
+
+.btn-outline-success:hover {
+  background-color: var(--bs-success);
+  border-color: var(--bs-success);
+}
+
+.btn-outline-danger {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.nav-link {
+  color: var(--bs-dark);
+}
+
+.nav-link:hover {
+  color: var(--bs-primary);
+}
+
+/* Add to your CSS */
+.react-pdf__Document {
+  display: inline-block;
+  line-height: 1;
+}
+
+.react-pdf__Page {
+  max-width: 100%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  margin: 1em;
+}
+
+.react-pdf__Page canvas {
+  max-width: 100%;
+  height: auto !important;
+}
+
+/* Add these new cursor styles */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+button:not(:disabled),
+[role="button"]:not(:disabled) {
+  cursor: pointer;
+}
+
+/* Also consider adding these interactive states for better UX */
+.btn:hover,
+.nav-link:hover,
+.clickable:hover {
+  cursor: pointer;
+}
+
+.disabled,
+button:disabled,
+[role="button"]:disabled {
+  cursor: not-allowed;
+}
